@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # primary nixpkgs
-    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.url = "github:saccarosium/nix-darwin/rebuild-flake-no-out-link";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
