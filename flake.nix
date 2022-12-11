@@ -10,7 +10,7 @@
   outputs = { self, darwin, nixpkgs }: {
     darwinConfigurations.macbook = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
-      modules = [ ./modules/darwin.nix ];
+      modules = [ ./hosts/darwin.nix ];
     };
   };
 }

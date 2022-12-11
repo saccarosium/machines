@@ -1,20 +1,20 @@
 { pkgs, ... }:
-let
-  home = builtins.getEnv "HOME";
-in
+
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment = {
     variables = {
       LANG = "en_US.UTF-8";
+      BASH_SILENCE_DEPRECATION_WARNING = "1";
+      LSCOLORS = "exgxcxdxCxegedabagacad";
     };
 
-    darwinConfig = "${home}/Repos/machines/modules/darwin.nix";
+    shells = with pkgs; [ bashInteractive ];
+
+    darwinConfig = "/Users/sacca/Repos/machines/modules/darwin.nix";
     systemPackages = with pkgs; [
-      bashInteractive
       bash-completion
       nix-bash-completions
+      coreutils
     ];
   };
 
@@ -44,8 +44,8 @@ in
       };
       dock = {
         autohide = true;
-        autohide-delay = 0.0;
-        autohide-time-modifier = 0.0;
+        # autohide-delay = 0.0;
+        # autohide-time-modifier = 0.0;
         expose-animation-duration = 0.0;
         orientation = "left";
         wvous-bl-corner = 1;
@@ -70,6 +70,7 @@ in
     onActivation = {
       cleanup = "zap";
       upgrade = true;
+      autoUpdate = true;
     };
     taps = [
       "homebrew/bundle"
@@ -77,9 +78,6 @@ in
       "homebrew/core"
       "homebrew/services"
       "wez/wezterm"
-    ];
-    brews = [
-      "bash"
     ];
     casks = [
       "anki"
@@ -102,8 +100,9 @@ in
       "signal"
       "tor-browser"
       "via"
-      "visual-studio-code"
+      "vscodium"
       "wezterm"
+      "emacs"
     ];
   };
 }
